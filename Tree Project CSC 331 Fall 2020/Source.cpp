@@ -75,11 +75,15 @@ int main()
     for (int i = 0; i < 26; i++) {
         int alphabet = 'a' + i;
         char x = alphabet;
+        cout << flush;
         T1.printInorderIndex(toupper(x));
         cout << "\n";
-        cout << setw(15) << setfill('-') << "\n";
+       // cout << setw(15) << setfill('-') << "\n";
     }
-    
+    // Perhaps create a function that can take in two parameters, wordcount and node. Will use a similar function to the print in orderindex function
+    // it'll then take thet number of words and check to see first if the words length is > than 3 then check how manytimes it was used and compare to
+    // the total words used. This means it'll divide that number by total words used to determine the % used. Must also somehow account for numbering of
+    // words printed. Internal counter in the function might remedy that. By counting each time something is printed, we can then newline + cout count and ")"
 
     return 0;
 }
