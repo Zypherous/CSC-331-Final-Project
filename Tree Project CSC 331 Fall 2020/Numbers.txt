@@ -1,1 +1,1 @@
-This is a text file to test how file reading works. Punctuation, and other @ # ## #$ characters are included to test. this this this
+This is a text file to test how file reading works. Punctuation, and other @ # ## #$ characters are included to test. this this this They're they are theyre.

@@ -26,7 +26,8 @@ private:
     void printInorder(node<T>*);
     void deleteItem(node<T>*&, T);
     void deleteNode(node<T>*&);
-
+    void printInorderIndex(node<T>* p, char firstLetter);
+    int uniqueWordsTotal(const node<T>*);
 
 public:
     BSTree();
@@ -42,6 +43,8 @@ public:
     void printPreorder();
     void printPostorder();
     void printInorder();
+    void printInorderIndex(char firstLetter);
+    int uniqueWordsUsed();
 };
 
 #endif

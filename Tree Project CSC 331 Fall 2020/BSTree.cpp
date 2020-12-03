@@ -1,4 +1,5 @@
 #include "BSTree.h"
+#include <iomanip>
 
 template <class T>
 BSTree<T> ::BSTree()
@@ -118,6 +119,7 @@ void BSTree<T> ::printInorder(node<T>* p)
     {
 
         printInorder(p->left);
+        //Attempt to print alphabet index
         cout << p->info
              << " Times Used:"
              << p->timesUsed
@@ -129,6 +131,7 @@ void BSTree<T> ::printInorder(node<T>* p)
     }
 
 }
+
 
 template <class T>
 void BSTree<T> ::insertItem(T item)
@@ -154,7 +157,7 @@ void BSTree<T> ::insertItem(T item)
 
             if (p->info == item)
             {
-                cout << "Duplicate, increasing coutner\n";
+                //cout << "Duplicate, increasing coutner\n";
                 p->timesUsed += 1;
                 delete temp;
                 return;
@@ -170,7 +173,7 @@ void BSTree<T> ::insertItem(T item)
         else
             trail->right = temp;
     }
-    trail->length = trail->info.length(); // Solve for the length issue, look at the previous lines. It seems
+    temp->length = temp->info.length(); // Solve for the length issue, look at the previous lines. It seems
     // like I might have to make it so that temp.length is = to temp.info.length();
 }
 
@@ -254,3 +257,62 @@ void BSTree<T> ::deleteNode(node<T>*& p)
     }
 }
 
+
+
+template <class T>
+int BSTree<T> :: uniqueWordsTotal(const node<T>* root)
+{
+    int used;
+    if (root->timesUsed == 1 && root->length > 3) {
+        used = 1;
+    }
+    else {
+        used = 0;
+    }
+    if (root->left != NULL) {
+        
+        used += uniqueWordsTotal(root->left);
+    }
+    if (root->right != NULL) {
+        used += uniqueWordsTotal(root->right);
+    }
+    return used;
+}
+
+
+template <class T>
+int BSTree<T> :: uniqueWordsUsed()
+{
+    int count = 0;
+    if (root != NULL) {
+        count = uniqueWordsTotal(root);
+    }
+    return count;
+}
+
+template <class T>
+void BSTree<T> ::printInorderIndex(char firstLetter)
+{   
+    cout << setw(15) << setfill(' ') <<  firstLetter << "\n"
+         << setw (15) << setfill('-') << "\n";
+    printInorderIndex(root,  firstLetter);
+    cout << "\n";
+
+}
+
+template <class T>
+void BSTree<T> ::printInorderIndex(node<T>* p , char firstLetter)
+{
+    if (p != NULL)
+    {
+
+        printInorderIndex(p->left,firstLetter);
+        //Attempt to print alphabet index
+        if(p->info[0] == firstLetter){
+            cout<< p->info << "\n";
+        }
+        printInorderIndex(p->right,firstLetter);
+
+    }
+
+}
