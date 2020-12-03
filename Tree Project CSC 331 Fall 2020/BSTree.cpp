@@ -125,7 +125,7 @@ void BSTree<T> ::printInorder(node<T>* p)
              << p->timesUsed
              << " Length: "
              << p->length
-             << endl;
+             << "\n";
         printInorder(p->right);
 
     }
@@ -293,11 +293,11 @@ int BSTree<T> :: uniqueWordsUsed()
 template <class T>
 void BSTree<T> ::printInorderIndex(char firstLetter)
 {   
-    cout << setw(15) << setfill(' ') <<  firstLetter << "\n"
-         << setw (15) << setfill('-') << "\n";
-    printInorderIndex(root,  firstLetter);
-    cout << "\n";
 
+    //Maybe need to flush the stream first?
+    cout << setw(7) << setfill(' ') << firstLetter << "\n";
+    cout << setw (15) << setfill('-') << "\n";
+    printInorderIndex(root, firstLetter);
 }
 
 template <class T>

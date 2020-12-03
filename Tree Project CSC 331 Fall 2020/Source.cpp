@@ -76,7 +76,8 @@ int main()
         int alphabet = 'a' + i;
         char x = alphabet;
         T1.printInorderIndex(toupper(x));
-        cout << "\b";
+        cout << "\n";
+        cout << setw(15) << setfill('-') << "\n";
     }
     
 
