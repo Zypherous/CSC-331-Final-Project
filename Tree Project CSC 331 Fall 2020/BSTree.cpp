@@ -290,6 +290,39 @@ int BSTree<T> :: uniqueWordsUsed()
     return count;
 }
 
+
+
+template <class T>
+int BSTree<T> ::uniqueWordsTotalAll(const node<T>* root)
+{
+    int used;
+    if (root->timesUsed == 1 ) {
+        used = 1;
+    }
+    else {
+        used = 0;
+    }
+    if (root->left != NULL) {
+
+        used += uniqueWordsTotal(root->left);
+    }
+    if (root->right != NULL) {
+        used += uniqueWordsTotal(root->right);
+    }
+    return used;
+}
+
+
+template <class T>
+int BSTree<T> ::uniqueWordsUsedAll()
+{
+    int count = 0;
+    if (root != NULL) {
+        count = uniqueWordsTotalAll(root);
+    }
+    return count;
+}
+
 template <class T>
 void BSTree<T> ::printInorderIndex(char firstLetter)
 { 
@@ -313,4 +346,30 @@ void BSTree<T> ::printInorderIndex(node<T>* p , char firstLetter)
         printInorderIndex(p->right,firstLetter);
 
     }
+}
+
+
+template <class T>
+void BSTree<T> ::printOften(int totalWords)
+{
+    printOften(root,totalWords);
+}
+
+template <class T>
+int BSTree<T> ::printOften(node<T>* p, int totalWords)
+{
+    int count = 0;
+    if (p != NULL)
+    {
+
+        count += printOften(p->left, totalWords);
+        //Attempt to print alphabet index
+        if (p->timesUsed/static_cast<float>(totalWords) > .05 && p->length > 3) {
+            cout << count + 1 <<  ") " << p->info << "\n";
+            count++;
+        }
+        count += printOften(p->right, totalWords);
+
+    }
+    return count;
 }

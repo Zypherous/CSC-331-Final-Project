@@ -19,16 +19,23 @@ int main()
 {
     BSTree<string> T1;
     string item;
+    string filename, ofile;
+    
+    filename = "Numbers.txt";
 
     ifstream infile;
     ofstream outfile;
 
+    ofile = "Output.txt";
 
     int wordCount = 0;
+    
+    
     int totalCharacters = 0;
     double averageSentenceLen = 0;
+    double averageWordLen = 0;
     averageSentenceLen = averageSentenceLength(infile);
-    infile.open("Numbers.txt");
+    infile.open(filename);
     if (infile.is_open()) {
         while (!infile.eof())
         {
@@ -63,23 +70,46 @@ int main()
    // T1.printPostorder();
     //cout << "\n\n";
    // T1.printPreorder();
-    cout << "\nTotal words = " <<  wordCount;
-    cout << "\nUnique words used = " << T1.uniqueWordsUsed();
+    
+
+       
+
+    averageWordLen = static_cast<double>(totalCharacters) / wordCount;
+        
+    cout << "FILE NAME: " << filename;
+    cout << "\n STATISTICAL SUMMARY\n";
+    cout << "\nTOTAL NUMBER OF WORDS : " <<  wordCount;
+    cout << "\nTOTAL NUMBER OF “UNIQUE” WORDS : " << T1.uniqueWordsUsedAll();
+    cout << "\nTOTAL NUMBER OF “UNIQUE” WORDS OF MORE THAN THREE LETTERS : " << T1.uniqueWordsUsed();
     cout << "\nTotal Characters for average word length: " << totalCharacters;
-    cout << "\nAverage word length by dividing the number of characters by the number of words: ";
-    cout << static_cast<float>(totalCharacters) / wordCount << "\n";
-    //averageSentenceLen = averageSentenceLength(infile);
-    cout << "\nAverage sentence length is: " << averageSentenceLen << "\n";
+    cout << "\nAVERAGE WORD LENGTH : " << averageWordLen << " characters";
+    cout << "\nAVERAGE SENTENCE LENGTH : " << averageSentenceLen << " words";
 
-
+    cout << "\n\n";
+    cout << right << setw(50) << setfill(' ') << "STYLE WARNINGS";
+    cout << "\n\n";
+    cout << "WORDS USED TOO OFTEN: (  WORDS OF MORE THAN 3 LETTERS THAT ARE USED MORE THAN 5% OF THE TOTAL NUMBER   OF WORDS OF MORE THAN 3 LETTERS )\n\n";
+    T1.printOften(wordCount);
+    
+    if (averageSentenceLen > 10) {
+        cout << "\nAVERAGE SENTENCE LENGTH TOO LONG - " << averageSentenceLen << " words";
+    }
+    if (averageWordLen > 5) {
+        cout << "\nAVERAGE WORD LENGTH TOO LONG - " << static_cast<float>(totalCharacters) / wordCount << " characters";
+    }
+    
+    cout <<  "\n\n";
+    cout << right << setw(50) << setfill(' ') << "INDEX OF UNIQUE WORDS\n";
     for (int i = 0; i < 26; i++) {
         int alphabet = 'a' + i;
         char x = alphabet;
-        cout << flush;
-        T1.printInorderIndex(toupper(x));
         cout << "\n";
+        T1.printInorderIndex(toupper(x));
+        //cout << "\n";
        // cout << setw(15) << setfill('-') << "\n";
     }
+
+    
     // Perhaps create a function that can take in two parameters, wordcount and node. Will use a similar function to the print in orderindex function
     // it'll then take thet number of words and check to see first if the words length is > than 3 then check how manytimes it was used and compare to
     // the total words used. This means it'll divide that number by total words used to determine the % used. Must also somehow account for numbering of
