@@ -1,0 +1,94 @@
+FILE NAME: Numbers.txt
+
+                              STATISTICAL SUMMARY
+
+TOTAL NUMBER OF WORDS : 963
+TOTAL NUMBER OF “UNIQUE” WORDS : 13
+TOTAL NUMBER OF “UNIQUE” WORDS OF MORE THAN THREE LETTERS : 9
+Total Characters for average word length: 5194
+AVERAGE WORD LENGTH : 5.39 characters
+AVERAGE SENTENCE LENGTH : 15.33 words
+
+                                    STYLE WARNINGS
+
+WORDS USED TOO OFTEN: (  WORDS OF MORE THAN 3 LETTERS THAT ARE USED MORE THAN 5% OF THE TOTAL NUMBER   OF WORDS OF MORE THAN 3 LETTERS )
+
+1) Hello
+1) Reading
+
+AVERAGE SENTENCE LENGTH TOO LONG - 15.33 words
+AVERAGE WORD LENGTH TOO LONG - 5.39 characters
+
+                            INDEX OF UNIQUE WORDS
+
+       A
+A
+And
+Are
+
+       B
+
+       C
+Characters
+
+       D
+
+       E
+
+       F
+File
+
+       G
+
+       H
+Hello
+How
+
+       I
+Included
+Is
+
+       J
+
+       K
+
+       L
+
+       M
+
+       N
+
+       O
+Other
+
+       P
+Punctuation
+
+       Q
+
+       R
+Reading
+
+       S
+
+       T
+Test
+Text
+They
+They're
+Theyre
+This
+To
+
+       U
+
+       V
+
+       W
+Works
+
+       X
+
+       Y
+
+       Z

@@ -1,3 +1,8 @@
+/******************************************************/
+/* Programmer:Jonathan Rosario                        */
+/* Date: 12/10/2020                                   */
+/* Purpose: Binary Search Tree implementation file    */                                      
+/******************************************************/
 #include "BSTree.h"
 #include <iomanip>
 
@@ -5,7 +10,6 @@ template <class T>
 BSTree<T> ::BSTree()
 {
     root = NULL;
-
 }
 
 template <class T>
@@ -119,7 +123,7 @@ void BSTree<T> ::printInorder(node<T>* p)
     {
 
         printInorder(p->left);
-        //Attempt to print alphabet index
+        // Prints information in tree using a modification of the normal print in order function to display other variables in each node
         cout << p->info
              << " Times Used:"
              << p->timesUsed
@@ -157,7 +161,7 @@ void BSTree<T> ::insertItem(T item)
 
             if (p->info == item)
             {
-                //cout << "Duplicate, increasing coutner\n";
+                // Increasing counter of times used in node
                 p->timesUsed += 1;
                 delete temp;
                 return;
@@ -173,8 +177,8 @@ void BSTree<T> ::insertItem(T item)
         else
             trail->right = temp;
     }
-    temp->length = temp->info.length(); // Solve for the length issue, look at the previous lines. It seems
-    // like I might have to make it so that temp.length is = to temp.info.length();
+    // Saving the length information to node
+    temp->length = temp->info.length(); 
 }
 
 template <class T>
@@ -257,8 +261,15 @@ void BSTree<T> ::deleteNode(node<T>*& p)
     }
 }
 
-
-
+#pragma region Functions added to BSTree for this project
+// uniqueWordsTotal //
+//******************************************************************************
+// Parameters: Pointer to node
+// Function: Takes a pointer to a node of type T, the root of a BS Tree and
+//           traverses the tree, counting only words with a length greater than 3
+//           and that have only been used once.
+// Returns:  integer holding the total number of unique words used
+//******************************************************************************
 template <class T>
 int BSTree<T> :: uniqueWordsTotal(const node<T>* root)
 {
@@ -279,7 +290,13 @@ int BSTree<T> :: uniqueWordsTotal(const node<T>* root)
     return used;
 }
 
-
+// uniqueWordsUsed//
+//******************************************************************************
+// Parameters: None
+// Function: Calls uniqueWordsTotal preventing user from accessing private node
+//
+// Returns:  integer holding the total number of unique words with length > 3 
+//******************************************************************************
 template <class T>
 int BSTree<T> :: uniqueWordsUsed()
 {
@@ -291,7 +308,13 @@ int BSTree<T> :: uniqueWordsUsed()
 }
 
 
-
+// uniqueWordsTotalAll //
+//******************************************************************************
+// Parameters: Pointer to node
+// Function: Takes a pointer to a node of type T, the root of a BS Tree and
+//           traverses the tree, counting words that have only been used once.
+// Returns:  integer holding the total number of unique words used
+//******************************************************************************
 template <class T>
 int BSTree<T> ::uniqueWordsTotalAll(const node<T>* root)
 {
@@ -312,7 +335,13 @@ int BSTree<T> ::uniqueWordsTotalAll(const node<T>* root)
     return used;
 }
 
-
+// uniqueWordsUsedAll//
+//******************************************************************************
+// Parameters: None
+// Function: Calls uniqueWordsTotalAll preventing user from accessing private node
+//
+// Returns:  integer holding the total number of unique words used
+//******************************************************************************
 template <class T>
 int BSTree<T> ::uniqueWordsUsedAll()
 {
@@ -323,15 +352,29 @@ int BSTree<T> ::uniqueWordsUsedAll()
     return count;
 }
 
+
+// printInorderIndex //
+//******************************************************************************
+// Parameters: character, output file stream address
+// Function: Takes a character and output file stream to call printInorderIndex
+//           that has root node access. Some formatting for index
+// Returns:  None
+//******************************************************************************
 template <class T>
 void BSTree<T> ::printInorderIndex(char firstLetter , ofstream &output)
 { 
-    //Maybe need to flush the stream first?
     output  << setw(8) << firstLetter << right << "\n";
-    //cout << setw (15) << setfill('-') << right << endl;
     printInorderIndex(root, firstLetter, output);
 }
 
+// printInorderIndex //
+//******************************************************************************
+// Parameters: pointer to node, character, output file stream address
+// Function: Takes the root node, then a character to compare the first character
+//           of each node's info and then outputs it to the file stream if it is
+//           a match.
+// Returns:  None
+//******************************************************************************
 template <class T>
 void BSTree<T> ::printInorderIndex(node<T>* p , char firstLetter, ofstream &output)
 {
@@ -348,13 +391,27 @@ void BSTree<T> ::printInorderIndex(node<T>* p , char firstLetter, ofstream &outp
     }
 }
 
-
+// printOften //
+//******************************************************************************
+// Parameters: integer, output file stream address
+// Function: Takes an integer and output file stream to call printOften
+//           that has root node access. 
+// Returns:  None
+//******************************************************************************
 template <class T>
 void BSTree<T> ::printOften(int totalWords, ofstream &output)
 {
     printOften(root,totalWords,  output);
 }
 
+// printOften //
+//******************************************************************************
+// Parameters: pointer to node, integer, output file stream address
+// Function: Takes the root node, then an integer of total words to compare  
+//           the times used of each node and then outputs it to the file stream 
+//           if it is used more than 5% of the total words
+// Returns:  None
+//******************************************************************************
 template <class T>
 int BSTree<T> ::printOften(node<T>* p, int totalWords , ofstream &output)
 {
@@ -373,3 +430,5 @@ int BSTree<T> ::printOften(node<T>* p, int totalWords , ofstream &output)
     }
     return count;
 }
+
+#pragma endregion BS Tree functions specifically for this project

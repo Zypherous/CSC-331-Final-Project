@@ -1,3 +1,8 @@
+/******************************************************/
+/* Programmer:Jonathan Rosario                        */
+/* Date: 12/10/2020                                   */
+/* Purpose: Binary Search Tree heade file             */
+/******************************************************/
 #pragma once
 #include <iostream>
 #include <fstream>
@@ -12,7 +17,11 @@ struct node
     T info;
     node* left;
     node* right;
+
+    // Variable to keep track of how many times a word is used
     int timesUsed = 1;
+
+    // Variable to hold the number of characters in word stored
     int length = 0;
 };
 
@@ -26,6 +35,8 @@ private:
     void printInorder(node<T>*);
     void deleteItem(node<T>*&, T);
     void deleteNode(node<T>*&);
+
+    // Functions added for this project
     void printInorderIndex(node<T>* , char , ofstream&);
     int uniqueWordsTotal(const node<T>*);
     int printOften(node<T>* , int , ofstream&);
@@ -45,6 +56,8 @@ public:
     void printPreorder();
     void printPostorder();
     void printInorder();
+
+    // Functions added for this project
     void printInorderIndex(char firstLetter, ofstream&);
     int uniqueWordsUsed();
     void printOften(int, ofstream&);
