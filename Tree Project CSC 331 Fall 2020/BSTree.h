@@ -26,9 +26,9 @@ private:
     void printInorder(node<T>*);
     void deleteItem(node<T>*&, T);
     void deleteNode(node<T>*&);
-    void printInorderIndex(node<T>* p, char firstLetter);
+    void printInorderIndex(node<T>* , char , ofstream&);
     int uniqueWordsTotal(const node<T>*);
-    int printOften(node<T>* , int );
+    int printOften(node<T>* , int , ofstream&);
     int uniqueWordsTotalAll(const node<T>*);
 
 public:
@@ -45,9 +45,9 @@ public:
     void printPreorder();
     void printPostorder();
     void printInorder();
-    void printInorderIndex(char firstLetter);
+    void printInorderIndex(char firstLetter, ofstream&);
     int uniqueWordsUsed();
-    void printOften(int);
+    void printOften(int, ofstream&);
     int uniqueWordsUsedAll();
 };
 

@@ -304,10 +304,10 @@ int BSTree<T> ::uniqueWordsTotalAll(const node<T>* root)
     }
     if (root->left != NULL) {
 
-        used += uniqueWordsTotal(root->left);
+        used += uniqueWordsTotalAll(root->left);
     }
     if (root->right != NULL) {
-        used += uniqueWordsTotal(root->right);
+        used += uniqueWordsTotalAll(root->right);
     }
     return used;
 }
@@ -324,51 +324,51 @@ int BSTree<T> ::uniqueWordsUsedAll()
 }
 
 template <class T>
-void BSTree<T> ::printInorderIndex(char firstLetter)
+void BSTree<T> ::printInorderIndex(char firstLetter , ofstream &output)
 { 
     //Maybe need to flush the stream first?
-    cout  << setw(8) << firstLetter << right << "\n";
+    output  << setw(8) << firstLetter << right << "\n";
     //cout << setw (15) << setfill('-') << right << endl;
-    printInorderIndex(root, firstLetter);
+    printInorderIndex(root, firstLetter, output);
 }
 
 template <class T>
-void BSTree<T> ::printInorderIndex(node<T>* p , char firstLetter)
+void BSTree<T> ::printInorderIndex(node<T>* p , char firstLetter, ofstream &output)
 {
     if (p != NULL)
     {
 
-        printInorderIndex(p->left,firstLetter);
+        printInorderIndex(p->left,firstLetter,  output);
         //Attempt to print alphabet index
         if(p->info[0] == firstLetter){
-            cout<< p->info << "\n";
+            output<< p->info << "\n";
         }
-        printInorderIndex(p->right,firstLetter);
+        printInorderIndex(p->right,firstLetter,  output);
 
     }
 }
 
 
 template <class T>
-void BSTree<T> ::printOften(int totalWords)
+void BSTree<T> ::printOften(int totalWords, ofstream &output)
 {
-    printOften(root,totalWords);
+    printOften(root,totalWords,  output);
 }
 
 template <class T>
-int BSTree<T> ::printOften(node<T>* p, int totalWords)
+int BSTree<T> ::printOften(node<T>* p, int totalWords , ofstream &output)
 {
     int count = 0;
     if (p != NULL)
     {
 
-        count += printOften(p->left, totalWords);
+        count += printOften(p->left, totalWords,  output);
         //Attempt to print alphabet index
         if (p->timesUsed/static_cast<float>(totalWords) > .05 && p->length > 3) {
-            cout << count + 1 <<  ") " << p->info << "\n";
+            output << count + 1 <<  ") " << p->info << "\n";
             count++;
         }
-        count += printOften(p->right, totalWords);
+        count += printOften(p->right, totalWords,  output);
 
     }
     return count;
